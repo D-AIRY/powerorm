@@ -528,7 +528,7 @@ class SchemaEditor extends BaseObject
             );
             $newColumn = new Column(
                 $oldField->getColumnName(),
-                Type::getType($oldField->dbType($this->connection)),
+                Type::getType($newField->dbType($this->connection)),
                 $newOpts
             );
 
