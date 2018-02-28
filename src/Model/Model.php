@@ -876,7 +876,7 @@ abstract class Model extends DeconstructableObject implements ModelInterface, Ar
      */
     public function offsetGet($offset)
     {
-        return $this->_fieldCache[$offset];
+        return $this->__get($offset);
     }
 
     /**
