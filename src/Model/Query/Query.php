@@ -804,7 +804,7 @@ class Query extends BaseObject implements ExpResolverInterface, CloneInterface
             return $resuableAliases[0];
         endif;
 
-        list($alias) = $this->getTableAlias($join->getTableName(), false);
+        list($alias) = $this->getTableAlias($join->getTableName(), true);
 
         if ($join->getJoinType()):
             if (LOUTER === $this->tableAliasMap[$join->getParentAlias()]->getJoinType() ||
@@ -988,12 +988,11 @@ class Query extends BaseObject implements ExpResolverInterface, CloneInterface
 
         // we create a new alias
         if ($aliases):
-            $aliases[] = sprintf('%s%s', $tableName, count($this->tableAliasMap));
+            $aliases[] = $alias = sprintf('%s%s', $tableName, count($this->tableAliasMap));
         else:
-            $this->tableAlias[$tableName] = [$tableName];
+            $this->tableAlias[$tableName] = [$alias = $tableName];
         endif;
 
-        $alias = $tableName;
         $this->aliasRefCount[$alias] = 1;
 
         return [$alias, true];
