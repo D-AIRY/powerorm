@@ -193,7 +193,7 @@ class SqlFetchBaseCompiler extends SqlCompiler
 
             preg_match(
                 "/(?P<name>.*)\s(?P<order>ASC|DESC)(.*)/",
-                'demo_entry.id DESC',
+                $sql,
                 $match
             );
             $strippedSql = $match['name'];
